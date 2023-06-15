@@ -8,12 +8,12 @@ import matplotlib.pyplot as plt
 
 st.title('Explore Retail Banking Dataset')
 # Load Data
-client = pd.read_csv("./create data/completedclient.csv")
-card = pd.read_csv("./create data/completedcard.csv")
-dacct = pd.read_csv("./create data/completedacct.csv")
-loan = pd.read_csv("./create data/completedloan.csv")
-poss = pd.read_csv("./create data/completeddisposition.csv")
-distrik = pd.read_csv("./create data/completeddistrict.csv")
+client = pd.read_csv("./data/completedclient.csv")
+card = pd.read_csv("./data/completedcard.csv")
+dacct = pd.read_csv("./data/completedacct.csv")
+loan = pd.read_csv("./data/completedloan.csv")
+poss = pd.read_csv("./data/completeddisposition.csv")
+distrik = pd.read_csv("./data/completeddistrict.csv")
 dl_merge = pd.merge(dacct,loan, on=["account_id", "year"])
 
 
@@ -34,7 +34,7 @@ dm = dl_merge
 #st.dataframe(dm)
 year_values = (int(dm["year"].min()), int(dm["year"].max()))
 metrics = ["duration", "payments", "amount"]
-dimension = ["frequency", "year" , "status", "month", "purpose"]
+dimension = ["frequency", "year" , "status", "month_x", "purpose"]
 
 def box_plot(dm, x, y):    
     fig = px.box(
